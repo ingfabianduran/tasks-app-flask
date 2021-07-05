@@ -1,0 +1,9 @@
+pip install -r requirements.txt
+new-alias -name avenv .\venv\Scripts\activate
+$env:FLASK_APP = "app"
+$env:FLASK_DEBUG = 1
+$env:FLASK_ENV = "development"
+-------------MIGRACIONES A LA BD-------------
+from app import db, create_app
+from app.models import Usuario, Tarea
+db.create_all(app=create_app())

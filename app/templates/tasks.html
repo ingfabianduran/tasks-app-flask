@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block title %}
+    {{ super() }}
+    Tasks
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2 class="text-center"><strong>Registrar Tarea</strong></h2>
+        {{ wtf.quick_form(task_form) }}
+    </div>
+{% endblock %}
