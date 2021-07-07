@@ -1,0 +1,27 @@
+{% macro render_tasks() %}
+    <div class="panel panel-primary list-tasks-margin">
+        <div class="panel-heading"><strong>Tareas de Fabian Duran</strong></div>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-4">
+                        Crear modulo clientes
+                    </div>
+                    <div class="col-md-2">
+                        <form action="#" method="post">
+                            <button type="button" class="btn btn-success btn-block">Editar</button>
+                        </form>
+                    </div>
+                    <div class="col-md-2">
+                        <form action="#" method="post">
+                            <button type="button" class="btn btn-danger btn-block">Eliminar</button>
+                        </form>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <span class="badge">Pendiente</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+{% endmacro %}

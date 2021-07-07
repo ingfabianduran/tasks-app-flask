@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from .forms import LoginForm
 from .models import Usuario
@@ -20,11 +20,13 @@ def index():
         usuario = Usuario.query.filter_by(usuario = data_usuario).first()
 
         if not usuario:
+            flash('Usuario no encontrado', 'alert-danger')
             return redirect(url_for('auth.index'))
         else: 
             if check_password_hash(usuario.password, data_password):
                 return redirect(url_for('task.index'))
             else: 
+                flash('Contraseña incorrecta', 'alert-danger')
                 return redirect(url_for('auth.index'))
 
     return render_template('index.html', **contexto)

@@ -11,4 +11,5 @@ class Tarea(db.Model):
     __tablename__ = 'tareas'
     id = db.Column(db.Integer, primary_key = True)
     descripcion = db.Column(db.String(200), nullable = False)
+    estado = db.Column(db.Boolean, nullable = False)
     id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id'))
