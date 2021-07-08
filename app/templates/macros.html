@@ -1,27 +1,33 @@
-{% macro render_tasks() %}
+{% macro render_tasks(tasks, usuario) %}
     <div class="panel panel-primary list-tasks-margin">
-        <div class="panel-heading"><strong>Tareas de Fabian Duran</strong></div>
+        <div class="panel-heading"><strong>Tareas de {{ usuario }}</strong></div>
         <ul class="list-group">
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-md-4">
-                        Crear modulo clientes
+            {% for task in tasks %}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{ task.descripcion }}
+                        </div>
+                        <div class="col-md-2">
+                            <form action="/task/update/{{ task.id }}" method="POST">
+                                <button type="submit" class="btn btn-success btn-block">Editar</button>
+                            </form>
+                        </div>
+                        <div class="col-md-2">
+                            <form action="/task/delete/{{ task.id }}" method="POST">
+                                <button type="submit" class="btn btn-danger btn-block">Eliminar</button>
+                            </form>
+                        </div>
+                        <div class="col-md-4 text-right">
+                            {% if task.estado == true %}
+                                <span class="badge">Pendiente</span>
+                            {% else %}
+                                <span class="badge">Realizada</span>
+                            {% endif %}
+                        </div>
                     </div>
-                    <div class="col-md-2">
-                        <form action="#" method="post">
-                            <button type="button" class="btn btn-success btn-block">Editar</button>
-                        </form>
-                    </div>
-                    <div class="col-md-2">
-                        <form action="#" method="post">
-                            <button type="button" class="btn btn-danger btn-block">Eliminar</button>
-                        </form>
-                    </div>
-                    <div class="col-md-4 text-right">
-                        <span class="badge">Pendiente</span>
-                    </div>
-                </div>
-            </li>
+                </li>
+            {% endfor %}
         </ul>
     </div>
 {% endmacro %}

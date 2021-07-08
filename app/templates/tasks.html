@@ -9,5 +9,5 @@
 {% block content %}
     <h2 class="text-center"><strong>Registrar Tarea</strong></h2>
     {{ wtf.quick_form(task_form) }}
-    {{ macros.render_tasks() }}
+    {{ macros.render_tasks(tasks, usuario) }}
 {% endblock %}

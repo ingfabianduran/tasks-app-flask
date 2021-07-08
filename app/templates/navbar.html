@@ -1,7 +1,26 @@
 <nav class="navbar navbar-inverse">
-    <div class="container">
+    <div class="container-fluid">
         <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand">Platzi Tasks</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('auth.signup') }}">Nuevo Usuario</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('task.index') }}">Nueva Tarea</a></li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('auth.logout') }}">Cerrar Sesion</a></li>
+                {% endif %}
+            </ul>
         </div>
     </div>
 </nav>
